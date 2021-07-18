@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: Inter,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  user-select: none;
+  scroll-behavior: smooth;
+  font-family: Inter;
+}
+
+.sticky {
+  position: fixed;
+  background: white;
+  top: 0px;
+  animation-name: headerStickyAnimation;
+  animation-duration: 400ms;
+  box-shadow: 0px 1px 5px gray;
+}
+@keyframes headerStickyAnimation {
+  from {
+    top: -40px;
+  }
+  to {
+    top: 0;
+  }
+}
