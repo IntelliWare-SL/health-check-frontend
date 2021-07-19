@@ -9,6 +9,7 @@ const initialState = {
   loading: false,
 };
 
+// all the home page actions are handled here
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.OPEN_CLOSE_FORMS:

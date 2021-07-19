@@ -3,11 +3,7 @@ import { put } from 'redux-saga/effects';
 import createRequest from '../../../utils/axios';
 import * as actionTypes from './homeActionTypes';
 
-// eslint-disable-next-line import/prefer-default-export
-export function* getData() {
-  yield console.log('Saga Working');
-}
-
+// this is the request to login a user
 export function* loginUser(action) {
   const Axios = yield createRequest();
   try {

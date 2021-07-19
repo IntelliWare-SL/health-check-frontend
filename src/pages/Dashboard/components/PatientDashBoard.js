@@ -50,23 +50,38 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function PatientDashBoard(props) {
+function PatientDashBoard({ filter }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  // get all the appointments of the current logged in in patient
   React.useEffect(() => {
     dispatch(getPatientAppointments());
   }, []);
 
-  const patientAppointments = useSelector(
+  const [patientAppointments, setPatientAppointments] = React.useState([]);
+  const allPatientAppointments = useSelector(
     (state) => state.dashboardReducer.patientAppointments
   );
 
   const loading = useSelector((state) => state.dashboardReducer.loading);
 
+  // cancel the appointment
   const changeAppointmentState = (e, _id) => {
     dispatch(cancelAppointments(_id));
   };
+
+  // Filter the appointments according to the state is happening here
+  React.useEffect(() => {
+    console.log(allPatientAppointments);
+    if (filter === 'all') {
+      setPatientAppointments(allPatientAppointments);
+    } else {
+      setPatientAppointments(
+        allPatientAppointments.filter((el) => el.state === filter)
+      );
+    }
+  }, [filter, allPatientAppointments]);
 
   return (
     <div
@@ -80,7 +95,6 @@ function PatientDashBoard(props) {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell className={classes.headerCell}>ID</TableCell>
               <TableCell className={classes.headerCell}>Doctor</TableCell>
               <TableCell className={classes.headerCell}>Doctor Field</TableCell>
               <TableCell className={classes.headerCell}>Date</TableCell>
@@ -106,7 +120,6 @@ function PatientDashBoard(props) {
             {!loading &&
               patientAppointments.map((appointment, index) => (
                 <StyledTableRow key={`${appointment._id}-${index}`}>
-                  <TableCell>{appointment._id}</TableCell>
                   <TableCell>{appointment.doctorId.name}</TableCell>
                   <TableCell>{appointment.doctorId.field}</TableCell>
                   <TableCell>

@@ -6,6 +6,7 @@ const initialState = {
   doctorAppointments: [],
 };
 
+// all the dashboard page actions are handled here
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.GET_PATIENT_APPOINTMENTS:

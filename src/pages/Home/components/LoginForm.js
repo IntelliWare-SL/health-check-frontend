@@ -70,10 +70,12 @@ function RegisterForm() {
   const loginFormOpen = useSelector((state) => state.homeReducer.loginFormOpen);
   const loading = useSelector((state) => state.homeReducer.loading);
 
+  // close the login popup
   const closeThisDialog = () => {
     dispatch(formsOpenClose({ loginFormOpen: false }));
   };
 
+  // close the login popup and open register form
   const openRegDialog = () => {
     dispatch(formsOpenClose({ loginFormOpen: false, RegisterFormOpen: true }));
   };

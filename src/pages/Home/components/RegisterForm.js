@@ -5,6 +5,8 @@ import Slide from '@material-ui/core/Slide';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import moment from 'moment';
+import { toast } from 'react-toastify';
 import { formsOpenClose, registerUser } from '../redux/homeActions';
 import logoImage from '../../../assets/logo.png';
 
@@ -67,24 +69,31 @@ function RegisterForm() {
   );
   const loading = useSelector((state) => state.homeReducer.loading);
 
+  // close registration form
   const closeThisDialog = () => {
     dispatch(formsOpenClose({ RegisterFormOpen: false }));
   };
 
+  // close registration form & open login form
   const openLoginDialog = () => {
     dispatch(formsOpenClose({ loginFormOpen: true, RegisterFormOpen: false }));
   };
 
+  // register this user as a patient
   const RegisterThisUser = () => {
-    dispatch(
-      registerUser({
-        name,
-        email,
-        password,
-        dob,
-        history,
-      })
-    );
+    if (moment().diff(dob, 'years') >= 18) {
+      dispatch(
+        registerUser({
+          name,
+          email,
+          password,
+          dob,
+          history,
+        })
+      );
+    } else {
+      toast.error('You should be over 18 years old');
+    }
   };
 
   return (

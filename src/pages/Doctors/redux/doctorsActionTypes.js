@@ -1,3 +1,4 @@
+// actions types used in doctors page are defined here
 export const GET_DOCTORS_DATA = 'GET_DOCTORS_DATA';
 export const GET_DOCTORS_DATA_SUCCESS = 'GET_DOCTORS_DATA_SUCCESS';
 export const GET_DOCTORS_DATA_ERROR = 'GET_DOCTORS_DATA_ERROR';

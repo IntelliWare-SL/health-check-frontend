@@ -1,5 +1,6 @@
 import * as actionTypes from './dashboardActionTypes';
 
+// Actions happening in dashboard page
 export function getPatientAppointments() {
   return { type: actionTypes.GET_PATIENT_APPOINTMENTS };
 }

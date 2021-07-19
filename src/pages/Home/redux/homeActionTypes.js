@@ -1,6 +1,4 @@
-export const GET_DATA = 'GET_DATA';
-export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
-
+// actions types used in home page are defined here
 export const OPEN_CLOSE_FORMS = 'OPEN_CLOSE_FORMS';
 
 export const LOGIN = 'LOGIN';

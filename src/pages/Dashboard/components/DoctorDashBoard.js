@@ -51,23 +51,37 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function DoctorDashBoard(props) {
+function DoctorDashBoard({ filter }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  // get all the appointments of the current logged in in doctor
   React.useEffect(() => {
     dispatch(getDoctorAppointments());
   }, []);
 
-  const doctorAppointments = useSelector(
+  const allDoctorAppointments = useSelector(
     (state) => state.dashboardReducer.doctorAppointments
   );
 
+  const [doctorAppointments, setDoctorAppointments] = React.useState([]);
+
   const loading = useSelector((state) => state.dashboardReducer.loading);
 
+  // cancel the appointment
   const changeAppointmentState = (e, _id) => {
     dispatch(cancelAppointments(_id));
   };
+
+  React.useEffect(() => {
+    if (filter === 'all') {
+      setDoctorAppointments(allDoctorAppointments);
+    } else {
+      setDoctorAppointments(
+        allDoctorAppointments.filter((el) => el.state === filter)
+      );
+    }
+  }, [filter, allDoctorAppointments]);
 
   return (
     <div
@@ -81,7 +95,6 @@ function DoctorDashBoard(props) {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell className={classes.headerCell}>ID</TableCell>
               <TableCell className={classes.headerCell}>Patient Name</TableCell>
               <TableCell className={classes.headerCell}>History</TableCell>
               <TableCell className={classes.headerCell}>Date</TableCell>
@@ -107,7 +120,6 @@ function DoctorDashBoard(props) {
             {!loading &&
               doctorAppointments.map((appointment, index) => (
                 <StyledTableRow key={`${appointment._id}-${index}`}>
-                  <TableCell>{appointment._id}</TableCell>
                   <TableCell>{appointment.patientId.name}</TableCell>
                   <TableCell>{appointment.patientId.history}</TableCell>
                   <TableCell>

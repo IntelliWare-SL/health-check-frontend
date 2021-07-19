@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { getDoctors, getSelectedDoctor } from '../redux/doctorsActions';
 import OneDoctor from './oneDoctor';
-import { formsOpenClose } from '../../Home/redux/homeActions';
 
+// list of the doctors in the system will be displayed
 const useStyles = makeStyles(() => ({
   card: {
     boxSizing: 'border-box',
@@ -34,10 +34,12 @@ function DoctorsList() {
   const allDoctors = useSelector((state) => state.doctorsReducer.allDoctors);
   const loading = useSelector((state) => state.doctorsReducer.loading);
 
+  // get the doctors from the backend
   React.useEffect(() => {
     dispatch(getDoctors());
   }, []);
 
+  // set selected doctor in the store is happening here
   const setSelectedDoctor = (doctor) => {
     dispatch(getSelectedDoctor({ doctor }));
   };
@@ -101,7 +103,7 @@ function DoctorsList() {
                           marginRight: 10,
                         }}
                       />
-                      +94 76 123 1234
+                      +44 1632 960514
                     </div>
                     <div
                       style={{

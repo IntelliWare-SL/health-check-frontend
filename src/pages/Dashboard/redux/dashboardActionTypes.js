@@ -1,3 +1,4 @@
+// actions types used in dashboard page are defined here
 export const GET_PATIENT_APPOINTMENTS = 'GET_PATIENT_APPOINTMENTS';
 export const GET_PATIENT_APPOINTMENTS_SUCCESS =
   'GET_PATIENT_APPOINTMENTS_SUCCESS';

@@ -14,6 +14,8 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
+// Filtering doctors according to the field is happening here
+
 function Filter() {
   const [selectedItems, setSelectedItems] = React.useState([]);
   const [jobFields, setJobFields] = React.useState([
@@ -35,6 +37,7 @@ function Filter() {
     };
   }, []);
 
+  // when a user click a checkbox this method will run
   const handleCheckBoxChange = (event) => {
     if (event.target.checked) {
       const newFilter = [...selectedItems, event.target.name];

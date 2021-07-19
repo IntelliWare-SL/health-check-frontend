@@ -1,9 +1,6 @@
 import * as actionTypes from './homeActionTypes';
 
-export function getData() {
-  return { type: actionTypes.GET_DATA };
-}
-
+// Actions happening in home page
 export function formsOpenClose(data) {
   return { type: actionTypes.OPEN_CLOSE_FORMS, data };
 }

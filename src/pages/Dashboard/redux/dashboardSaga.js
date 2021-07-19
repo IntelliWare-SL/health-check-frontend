@@ -3,6 +3,7 @@ import { put } from 'redux-saga/effects';
 import createRequest from '../../../utils/axios';
 import * as actionTypes from './dashboardActionTypes';
 
+// Get all the appointments of the currently logged in patient
 export function* getAppointments() {
   const Axios = yield createRequest();
   try {
@@ -19,6 +20,7 @@ export function* getAppointments() {
   }
 }
 
+// Get all the appointments of the currently logged in doctor
 export function* getDoctorAppointments() {
   const Axios = yield createRequest();
   try {
@@ -35,6 +37,7 @@ export function* getDoctorAppointments() {
   }
 }
 
+// Cancel an appointment, this is a common method for both doctors and patients
 export function* cancelAppointments(action) {
   const _id = action.data;
   const Axios = yield createRequest();

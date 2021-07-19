@@ -3,6 +3,7 @@ import { put, select } from 'redux-saga/effects';
 import createRequest from '../../../utils/axios';
 import * as actionTypes from './doctorsActionTypes';
 
+// get all the doctors from backend
 export function* getDoctors(action) {
   const filter = yield select((state) => state.doctorsReducer.filter);
   const Axios = yield createRequest();
@@ -22,6 +23,7 @@ export function* getDoctors(action) {
   }
 }
 
+// get a selected doctor by ID from the backend
 export function* getSelectedDoctor(action) {
   const { _id } = action.data.doctor;
   const Axios = yield createRequest();
@@ -40,6 +42,7 @@ export function* getSelectedDoctor(action) {
   }
 }
 
+// place an appointment with a doctor
 export function* placeAppointment(action) {
   const Axios = yield createRequest();
   try {

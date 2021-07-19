@@ -53,6 +53,7 @@ function Header() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const idToken = useSelector((state) => state.homeReducer.idToken);
+  const user = useSelector((state) => state.homeReducer.user);
   const [scrollY, setScrollY] = React.useState(0);
   const history = useHistory();
 
@@ -85,9 +86,20 @@ function Header() {
       <div className={`${scrollY > 200 ? 'sticky' : ''} ${classes.container}`}>
         <div
           onClick={strollToTop}
-          style={{ marginLeft: 20, cursor: 'pointer' }}
+          style={{
+            marginLeft: 20,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+          }}
         >
           <img style={{ height: 45 }} alt="logo" src={logoImage} />
+          <div style={{ marginLeft: 20, fontWeight: 'bold' }}>
+            {user && user.name}
+            {user && user.field
+              ? ` - ${user.field}`
+              : user && ` - Registered Patient`}
+          </div>
         </div>
         <div className={classes.btnContainer}>
           <div
@@ -100,11 +112,10 @@ function Header() {
           <div
             onClick={() => history.push('/doctors')}
             className={classes.headerItem}
-            style={{ marginRight: 30 }}
           >
             DOCTORS
           </div>
-          <div className={classes.headerItem}>SUPPORT</div>
+
           <Divider
             style={{ margin: '0px 25px' }}
             component="div"

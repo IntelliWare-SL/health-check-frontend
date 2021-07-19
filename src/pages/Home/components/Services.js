@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import CheckRoundedIcon from '@material-ui/icons/CheckRounded';
 
+// No logic here, just a static html
 function Services() {
   return (
     <div style={{ marginTop: 50, marginLeft: 30, marginRight: 30 }}>

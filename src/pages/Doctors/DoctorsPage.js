@@ -4,6 +4,7 @@ import Header from '../../common/Header';
 import Filter from './components/Filter';
 import DoctorsList from './components/DoctorsList';
 
+// this is the page displayed when you goto Doctors
 function DoctorsPage() {
   return (
     <>

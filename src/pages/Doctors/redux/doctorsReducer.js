@@ -10,6 +10,7 @@ const initialState = {
   doctorDetails: { name: '', email: '', field: '', timeSlots: {} },
 };
 
+// all the doctors page actions are handled here
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.SET_FILTER:

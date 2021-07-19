@@ -1,5 +1,6 @@
 import * as actionTypes from './doctorsActionTypes';
 
+// Actions happening in doctors page
 export function getDoctors() {
   return { type: actionTypes.GET_DOCTORS_DATA };
 }

@@ -18,6 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+// No logic is happening here, just normal html & css in the homepage Footer
 function Footer() {
   const classes = useStyles();
   return (
@@ -57,7 +58,7 @@ function Footer() {
               marginLeft: 20,
             }}
           >
-            <div>+94 76 123 12334</div>
+            <div>+44 1632 960514</div>
             <div style={{ color: 'rgb(0, 176, 116)', marginTop: 3 }}>
               healthcheckbooking@outlook.com
             </div>

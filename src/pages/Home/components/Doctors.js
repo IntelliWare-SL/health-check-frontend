@@ -28,14 +28,17 @@ function Doctors() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  // this method get all the doctors and filter first 6 to dispplay in the home page
   const get6Doctors = useSelector((state) =>
     state.doctorsReducer.allDoctors.slice(0, 5)
   );
 
+  // fetch all the doctors from the backend
   React.useEffect(() => {
     dispatch(getDoctors());
   }, []);
 
+  // dummy image of the doctor used in the application
   const url =
     'https://www.pngkey.com/png/detail/24-248941_doctors-and-nurses-png-image-de-doctor.png';
 
